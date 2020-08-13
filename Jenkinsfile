@@ -17,7 +17,7 @@ pipeline {
         }
         stage('start test app'){
             steps{
-               sudo sh (script:"""
+               bash (script:"""
                 # start app line missing
                 ./scripts/test_container.sh
                 """)
@@ -34,7 +34,7 @@ pipeline {
         }
         stage('Run Tests'){
             steps{
-               sudo sh (script: """
+               bash (script: """
                  pytest ./tests/test_sample.sh
                 """)
             }
