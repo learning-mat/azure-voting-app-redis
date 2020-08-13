@@ -17,7 +17,7 @@ pipeline {
         }
         stage('start test app'){
             steps{
-                sh (script:"""
+               sudo sh (script:"""
                 # start app line missing
                 ./scripts/test_container.sh
                 """)
@@ -34,14 +34,14 @@ pipeline {
         }
         stage('Run Tests'){
             steps{
-                sh (script: """
+               sudo sh (script: """
                  pytest ./tests/test_sample.sh
                 """)
             }
         }
         stage('Stop test app'){
             steps {
-                sh (script: """
+              sudo  sh (script: """
                 docker-compose down
                 """)
             }
