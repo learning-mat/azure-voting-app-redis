@@ -40,8 +40,8 @@ pipeline {
             }
         }
         stage('Stop test app'){
-            sh {
-                pwsh (script: """
+            steps {
+                sh (script: """
                 docker-compose down
                 """)
             }
