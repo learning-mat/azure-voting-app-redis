@@ -17,9 +17,9 @@ pipeline {
         }
         stage('start test app'){
             steps{
-                pwsh (script:"""
+                sh (script:"""
                 # start app line missing
-                ./scripts/test_container.ps1
+                ./scripts/test_container.sh
                 """)
             }
             post{
@@ -34,13 +34,13 @@ pipeline {
         }
         stage('Run Tests'){
             steps{
-                powershell (script: """
-                 pytest ./tests/test_sample.ps1
+                sh (script: """
+                 pytest ./tests/test_sample.sh
                 """)
             }
         }
         stage('Stop test app'){
-            steps {
+            sh {
                 pwsh (script: """
                 docker-compose down
                 """)
